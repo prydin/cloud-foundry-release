@@ -10,7 +10,7 @@ set -e
 PROXY_SOURCE='https://github.com/wavefrontHQ/java/archive/wavefront-4.36.tar.gz'
 PROXY_TGZ='proxy.tgz'
 
-NOZZLE_SOURCE='https://github.com/wavefrontHQ/cloud-foundry-nozzle-go/archive/v1-beta.5.tar.gz'
+NOZZLE_SOURCE='https://github.com/wavefrontHQ/cloud-foundry-nozzle-go/archive/v1-beta.6.tar.gz'
 NOZZLE_TGZ='nozzle.tgz'
 
 BROKER_SOURCE='https://github.com/wavefrontHQ/cloud-foundry-servicebroker/archive/0.9.3.tar.gz'
@@ -37,7 +37,7 @@ case $i in
 esac
 done
 
-[ "${FINAL}" == "NO" ] && BOSH_OPTS="--force"
+[ "${FINAL}" == "NO" ] && BOSH_OPTS="--force" || BOSH_OPTS="--final"
 [ "${DEBUG}" == "YES" ] && export BOSH_LOG_LEVEL=debug
 [ "${DEBUG}" == "YES" ] && MVN_OPTS='-B' || MVN_OPTS='-q'
 
@@ -133,7 +133,7 @@ echo -e "\033[1;32m Building PCF Tile \033[0m"
 echo "###"
 echo
 
-tile build
+tile build $@
 
 echo
 echo "###"
