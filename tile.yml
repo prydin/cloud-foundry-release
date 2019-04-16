@@ -71,6 +71,9 @@ packages:
       NOZZLE_SKIP_SSL: (( .properties.pcf_skip_ssl_validation.value ))
       NOZZLE_SELECTED_EVENTS: ValueMetric,CounterEvent,ContainerMetric
 
+      NOZZLE_APP_CACHE_PRELOADER: (( .properties.nozzle_app_cache_preloader.value ))
+      NOZZLE_APP_CACHE_SIZE: (( .properties.nozzle_app_cache_size.value ))
+
       WAVEFRONT_PROXY_PORT: 2878
       WAVEFRONT_PREFIX: pcf
       WAVEFRONT_FOUNDATION: (( .properties.custom_tag_foundation.value ))
@@ -173,3 +176,13 @@ forms:
     label: Metrics Black List
     optional: true
     description: Comma separated list of glob patterns. Metrics with names matching the blacklist are dropped.
+  - name: nozzle_app_cache_size
+    type: int
+    label: Application name cache size
+    description: The size of the cache for application id to name translation.
+    optional: true
+  - name: nozzle_app_preloader
+    type: string
+    label: URL to application cache preloader
+    description: URL to an endpoint capable of delivering the PAS application table
+    optional: true
